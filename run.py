@@ -20,4 +20,14 @@ def save_user(user):
   Args:
   user:the user account to be saved
   '''
-  user.save_user()
+  return user.save_user()
+  
+def check_existing_users(name):
+  '''
+  function that checks if the username already exists
+  Args:
+  name:the username
+  '''
+  return User.user_exist(name)
+  
+  
