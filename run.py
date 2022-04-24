@@ -58,3 +58,17 @@ def create_credential(userpassword,name,password):
   '''
   new_credential=Credentials(userpassword,name,password)
   return new_credential
+
+def save_credential(credential):
+  '''
+  function that allows us to save credentials
+  '''
+  credential.save_credential()
+  
+def check_existing_credential(name):
+  '''
+  function that checks if the credential name already exists
+  Args:
+  name:credential name
+  '''
+  return Credentials.credential_exist(name)
