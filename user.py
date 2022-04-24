@@ -19,5 +19,6 @@ class User:
     '''
     save_user method helps save a user to user_list
     '''
+    User.user_list.append(self)
     
   
