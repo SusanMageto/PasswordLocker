@@ -3,6 +3,7 @@
 This is the file that will run the application
 '''
 from user import User
+from credentials import Credentials
 
 def create_user(name,password):
   '''
@@ -40,5 +41,10 @@ def user_sign_in(name,password):
   sign_in=User.sign_in(name,password)
   if sign_in !=False:
     return User.sign_in(name,password)
-  
+
+def display_users():
+  '''
+  function that displays all the saved users
+  '''
+  return User.display_users()
   
