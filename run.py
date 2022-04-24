@@ -88,3 +88,14 @@ def create_generated_password (name):
   password=Credentials.generate_password()
   return password
 
+def main():
+  '''
+  function for running this app
+  '''
+  print ('''Hello! Welcome to password Locker''')
+
+
+
+if __name__ == '__main__':
+
+    main()

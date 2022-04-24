@@ -33,3 +33,18 @@ def save_credentials(self):
   a method that saves credentials to credentials list
   '''
   Credentials.credentials_list.append(self)
+  
+@classmethod
+def generate_password(cls):
+  '''
+  a class method that generate an alphanumeric password
+  '''
+  #gives us the number of characters in our password
+  size=9
+  
+  #generate a random alphanumeric password
+  alphanumeric=string.ascii_lowercase+string.digits+string.ascii_uppercase
+  
+  #creates password
+  password=''.join( choice(alphanumeric) for num in range(size))
+  return password
