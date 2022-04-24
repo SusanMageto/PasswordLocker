@@ -29,5 +29,16 @@ def check_existing_users(name):
   name:the username
   '''
   return User.user_exist(name)
+
+def user_sign_in(name,password):
+  '''
+  function that will allow the user to sign in to their credentials account
+  Args:
+  name:username
+  password:password used in creating user account
+  '''
+  sign_in=User.sign_in(name,password)
+  if sign_in !=False:
+    return User.sign_in(name,password)
   
   
