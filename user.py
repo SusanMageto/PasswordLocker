@@ -5,13 +5,19 @@ class User:
   
   user_list=[] # Empty list of users
   
-  def __init__(self, user_name, password):
+  def __init__(self, username, password):
     '''
     init method that helps us define properties for our object
     Args:
-    user_name:name of the user
-    user_password:password of the user
+    username:name of the user
+    password:password of the user
     '''
-    self.user_name= user_name
-    self.user_password= password 
+    self.username= username
+    self.password= password 
+    
+  def save_user(self):
+    '''
+    save_user method helps save a user to user_list
+    '''
+    
   
