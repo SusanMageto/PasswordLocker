@@ -48,3 +48,13 @@ def display_users():
   '''
   return User.display_users()
   
+def create_credential(userpassword,name,password):
+  '''
+  function to create a credential
+  Args:
+  userpassword:the user's password
+  name:account name
+  password:account password
+  '''
+  new_credential=Credentials(userpassword,name,password)
+  return new_credential

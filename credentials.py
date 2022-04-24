@@ -16,7 +16,7 @@ Class that generates new instances of credentials for the users
 
 credentials_list=[] #Empty list of credentials
 
-def __init__(self,password,credential_name,credential_password):
+def __init__(self,userpassword,credential_name,credential_password):
   '''
   init method that helps us define properties for our user object
   Args:
@@ -24,7 +24,7 @@ def __init__(self,password,credential_name,credential_password):
   credential_name:name of the credential account
   credential password:password for the credential account
   '''
-  self.password=password
+  self.userpassword=userpassword
   self.credential_name=credential_name
   self.credential_password=credential_password
   
