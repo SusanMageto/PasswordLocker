@@ -78,3 +78,13 @@ def display_credentials(password):
   function that displays all saved credentials with their passwords
   '''
   return Credentials.display_credentials(password)
+
+def create_generated_password (name):
+  '''
+  function that will generate a passowrd for the user
+  Args:
+  name:account name
+  '''
+  password=Credentials.generate_password()
+  return password
+
