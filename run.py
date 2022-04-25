@@ -101,38 +101,176 @@ def main():
     print ('''
            short codes:
            ca - create password locker account \n
-           dn - display names of current password locker users
-           si - sign into your password locker account
+           dn - display names of current password locker users \n
+           si - sign into your password locker account \n
            ex - exit password locker account
-           '''
+           ''')
     
     #to get short code from user
     short_code=input().lower()
     
-    if short_code=='ca'
+    if short_code=='ca':
           '''
           create password locker account
           '''
-         print("\n")
-            print("New Password Locker Account")
-            print("-"*10)
+          print("\n")
+          print("New Password Locker Account")
+          print("-"*10)
 
-            print("User name ...")
-            username = input()
+          print("User name ...")
+          username = input()
 
-            print("Password ...")
-            userpassword = input()
+          print("Password ...")
+          userpassword = input()
 
             # Create and save new user
-            save_users( create_user( username, userpassword) )
+          save_user( create_user( username, userpassword) )
 
+          print("\n")
+          print(f"{username} welcome to Password Locker")
+          print("\n")
+    
+    elif short_code == 'dn':
+            '''
+            Display the names of the current users 
+            '''
+            if display_users():
+              print("\n")
+              print("Here is the list of the current users of Password Locker")
+              print("-"*10)
+
+              for user in display_users():
+                    print(f"{user.username}")
+                    print("-"*10)
+            else:
+                print("\n")
+                print("There are no current users in Password Locker. \n    Be the first user :)")
+                print("\n")
+                
+    elif short_code == 'si':
+            '''
+            Signs the user into their Password Locker account
+            '''
             print("\n")
-            print(f"{username} welcome to Password Locker")
+            print("Sign into Password Locker Account")
+            print("Enter the user name")
+            username = input()
+
+            print("Enter the password")
+            userpassword = input()
+
+            if user_sign_in(username,userpassword) == None:
+                print("\n")
+                print("Please try again or create an account")
+                print("\n")
+
+            else:
+
+                user_sign_in(username,userpassword)
+                print("\n")
+                print(f'''{username} welcome to your Credentials\n
+                Use these short codes to navigate''')
+                
+                while True:
+                    '''
+                    Loop to run functions after signing in
+                    '''
+                    print('''  Short codes:
+        cc - add a credential \n
+        dc - display credentials \n
+        cp - create a credential with a generate password \n
+        ex - exit Credentials''')
+
+                    # Get short code from the user
+                    short_code = input().lower()
+
+                    if short_code == 'cc':
+                        '''
+                        Creating a Credential
+                        '''
+
+                        print("\n")
+                        print("New Credential")
+                        print("-"*10)
+
+                        print("Name of the credential ...")
+                        credential_name = input()
+
+                        print("Password of the credential ...")
+                        credential_password = input()
+
+                        # Create and save new user
+                        save_credential(create_credential( userpassword, credential_name, credential_password) )
+
+                        print("\n")
+                        print(f"Credentials for {credential_name} have been created and saved")
+                        print("\n")
+                    elif short_code == 'dc':
+                        '''
+                        Displays credential name and password
+                        '''
+
+                        if display_credentials(userpassword):
+                            print("\n")
+                            print(f"{username}\'s credentials")
+                            print("-"*10)
+
+                            for credential in display_credentials(userpassword):
+                                print(f"Account ..... {credential.credential_name}")
+                                print(f"Password .... {credential.credential_password}")
+                                print("-"*10)
+
+                        else:
+                            print("\n")
+                            print("You have no credentials")
+                            print("\n")
+                            
+                    elif short_code == 'cp':
+                        '''
+                        Creating a credential with a generated password
+                        '''
+
+                        print("\n")
+                        print("New Credential")
+                        print("-"*10)
+
+                        print("Name of the credential ...")
+                        credential_name = input()
+
+                        # Saves new credential with its generated password
+                        save_credential( Credentials(userpassword, credential_name, (create_generated_password(credential_name)) ) )
+                        print("\n")
+                        print(f"Credentials for {credential_name} have been created")
+                        print("\n")
+                        
+                    elif short_code == 'ex':
+                        print(f"See you later {username}")
+                        print("\n")
+                        break
+
+                    else:
+                        print("\n")
+                        print(f'''{short_code} does not compute.
+    Please use the short codes provided''')
+                        print("\n")  
+                        
+                        
+    elif short_code == 'ex':
+            '''
+            Exit Password Locker
+            '''
             print("\n")
-    )
+            print("Bye .....")
 
+            break
 
+    else:
+            print("\n")
+            print(f'''Come again, what's {short_code}?
+    Please use the short codes''')
+            print("\n")
 
+                
 if __name__ == '__main__':
 
     main()
