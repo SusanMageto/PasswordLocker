@@ -92,7 +92,44 @@ def main():
   '''
   function for running this app
   '''
-  print ('''Hello! Welcome to password Locker''')
+  print ('''Hello! Welcome to password Locker \n Use the following codes to navigate the app''')
+  
+  while True: 
+    '''
+    loop to run the whole app
+    '''
+    print ('''
+           short codes:
+           ca - create password locker account \n
+           dn - display names of current password locker users
+           si - sign into your password locker account
+           ex - exit password locker account
+           '''
+    
+    #to get short code from user
+    short_code=input().lower()
+    
+    if short_code=='ca'
+          '''
+          create password locker account
+          '''
+         print("\n")
+            print("New Password Locker Account")
+            print("-"*10)
+
+            print("User name ...")
+            username = input()
+
+            print("Password ...")
+            userpassword = input()
+
+            # Create and save new user
+            save_users( create_user( username, userpassword) )
+
+            print("\n")
+            print(f"{username} welcome to Password Locker")
+            print("\n")
+    )
 
 
 
