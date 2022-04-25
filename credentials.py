@@ -48,3 +48,28 @@ def generate_password(cls):
   #creates password
   password=''.join( choice(alphanumeric) for num in range(size))
   return password
+
+@classmethod
+def display_credentials(cls,password):
+  '''
+  a class method that returns the credential list
+  '''
+  users_credentials_list=[]
+  for credential in cls.credentials_list:
+    if credential.userpassword==password:
+      users_credentials_list.append(credential)
+      return users_credentials_list
+    
+@classmethod
+def credential_exist(cls,name):
+  '''
+  a class method that checks if a credential exists in the list of credentials
+  Args:
+  name: credential name
+  will return a boolean value:true/false
+  '''
+  for credential in cls.credential_list:
+    if credential.credential_name==name:
+      return True
+    return False
+  
