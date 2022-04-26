@@ -1,78 +1,49 @@
-# from cryptography.fernet import Fernet
-# import re
-# import ctypes
-# import time
-# import os
-# import sys
-
-
-# class Credentials():
-    
-#     credentials_list = []
-
-#     user_credentials_list = []
 import random
-from random import choice
 import string
-class Credentials:
-  credentials_list=[] #Empty list of credentials
-  def __init__(self, username, account_name, password):
-        self.username = username
-        self.account_name = account_name
+
+
+class Credential:
+    credential_list = []  # Created an empty credential list
+
+    def __init__(self, social_media, account, password):
+        """
+        The init method defines the properties of the object
+        :param social_media:
+        :param account:
+        :param password:
+        """
+        self.social = social_media
+        self.account = account
         self.password = password
 
-def save_credentials(self):
-        Credentials.credentials_list.append(self)
-
-def delete_credentials(self):
-        Credentials.credentials_list.remove(self)
-
-
-
-@classmethod
-def verify_user(cls,username, password):
+    def save_credential(self):
         """
-        method to verify whether the user is in our user_list or not
+        Saving the user credentials
+        :return:
         """
-        a_user = ""
-        for user in User.user_list:
-            if(user.username == username and user.password == password):
-                    a_user == user.username
-        return a_user
+        Credential.credential_list.append(self)
 
-@classmethod
-def find_credentials(cls, account):
+    def delete_credential(self):
         """
-        Method that takes in a account_name and returns a credential that matches that account_name.
+        Deleting the user credentials
+        :return:
         """
-        for credential in cls.credentials_list:
-            if credential.account == account:
-                return credential
-@classmethod
-def copy_password(cls,account):
-        found_credentials = Credentials.find_credential(account)
-        pyperclip.copy(found_credentials.password)
+        Credential.credential_list.remove(self)
 
-@classmethod
-def if_credentials_exist(cls, account):
+    @classmethod
+    def display_credentials(cls):
         """
-        Method that checks if a credential exists from the credential list and returns true or false depending if the credential exists.
+        Function to display credentials
+        :return:
         """
-        for credential in cls.credentials_list:
-            if credential.account == account:
-                return True
-        return False
-@classmethod
-def display_credentials(cls):
-        """
-        Method that returns all items in the credentials list
-        """
-        return cls.credentials_list
+        return cls.credential_list
 
-def generatePassword(stringLength=8):
-        """Generate a random password string of letters and digits and special characters"""
-        password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
-        return ''.join(random.choice(password) for i in range(stringLength))
-    
+    def automatic_generated_password(length=12, password=string.digits + string.ascii_letters + string.ascii_uppercase):
+        """
+        Function to generate a random password
+        :param password:
+        :return:
+        """
 
-   
+        random_password = ''.join(random.choice(password) for i in range(length))
+        return random_password
