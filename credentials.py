@@ -1,75 +1,78 @@
-'''
-credential module by Sue
-Imports the random module from python for password generation
-imports the string module from python for password generation
-imports the user from the user module so as to get access to the user
-'''
+# from cryptography.fernet import Fernet
+# import re
+# import ctypes
+# import time
+# import os
+# import sys
+
+
+# class Credentials():
+    
+#     credentials_list = []
+
+#     user_credentials_list = []
+import random
 from random import choice
 import string
-from user import User
-
 class Credentials:
-  
- """
-Class that generates new instances of credentials for the users
-"""
+  credentials_list=[] #Empty list of credentials
+  def __init__(self, username, account_name, password):
+        self.username = username
+        self.account_name = account_name
+        self.password = password
 
-credentials_list=[] #Empty list of credentials
-
-def __init__(self,userpassword,credential_name,credential_password):
-  '''
-  init method that helps us define properties for our user object
-  Args:
-  password:the user's password
-  credential_name:name of the credential account
-  credential password:password for the credential account
-  '''
-  self.userpassword=userpassword
-  self.credential_name=credential_name
-  self.credential_password=credential_password
-  
 def save_credentials(self):
-  '''
-  a method that saves credentials to credentials list
-  '''
-  Credentials.credentials_list.append(self)
-  
-@classmethod
-def generate_password(cls):
-  '''
-  a class method that generate an alphanumeric password
-  '''
-  #gives us the number of characters in our password
-  size=9
-  
-  #generate a random alphanumeric password
-  alphanumeric=string.ascii_lowercase+string.digits+string.ascii_uppercase
-  
-  #creates password
-  password=''.join( choice(alphanumeric) for num in range(size))
-  return password
+        Credentials.credentials_list.append(self)
+
+def delete_credentials(self):
+        Credentials.credentials_list.remove(self)
+
+
 
 @classmethod
-def display_credentials(cls,password):
-  '''
-  a class method that returns the credential list
-  '''
-  users_credentials_list=[]
-  for credential in cls.credentials_list:
-    if credential.userpassword==password:
-      users_credentials_list.append(credential)
-      return users_credentials_list
-    
+def verify_user(cls,username, password):
+        """
+        method to verify whether the user is in our user_list or not
+        """
+        a_user = ""
+        for user in User.user_list:
+            if(user.username == username and user.password == password):
+                    a_user == user.username
+        return a_user
+
 @classmethod
-def credential_exist(cls,name):
-  '''
-  a class method that checks if a credential exists in the list of credentials
-  Args:
-  name: credential name
-  will return a boolean value:true/false
-  '''
-  for credential in cls.credential_list:
-    if credential.credential_name==name:
-      return True
-    return False
-  
+def find_credentials(cls, account):
+        """
+        Method that takes in a account_name and returns a credential that matches that account_name.
+        """
+        for credential in cls.credentials_list:
+            if credential.account == account:
+                return credential
+@classmethod
+def copy_password(cls,account):
+        found_credentials = Credentials.find_credential(account)
+        pyperclip.copy(found_credentials.password)
+
+@classmethod
+def if_credentials_exist(cls, account):
+        """
+        Method that checks if a credential exists from the credential list and returns true or false depending if the credential exists.
+        """
+        for credential in cls.credentials_list:
+            if credential.account == account:
+                return True
+        return False
+@classmethod
+def display_credentials(cls):
+        """
+        Method that returns all items in the credentials list
+        """
+        return cls.credentials_list
+
+def generatePassword(stringLength=8):
+        """Generate a random password string of letters and digits and special characters"""
+        password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
+        return ''.join(random.choice(password) for i in range(stringLength))
+    
+
+   
