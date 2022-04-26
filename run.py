@@ -222,7 +222,7 @@ def main():
                 print("Sorry, we can't find such a user. Please try again!")
 
         else:
-            print("Goodbye...")
+            print("Goodbye my friend...")
             break
 
 
