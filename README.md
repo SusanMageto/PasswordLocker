@@ -11,7 +11,7 @@ This application will help users manage their passwords and even generate new pa
 * As a user, I also want to view my various account credentials and their passwords in the application.
 * As a user, I want to delete a credentials account that I no longer need in the application.
 ## Setup/Installation Requirements
-Run the main.py file
+Run the run.py file
 ## Known Bugs
 There are currently no bugs. If you experience any bugs, don't hesitate to contact me.
 ## Technologies Used

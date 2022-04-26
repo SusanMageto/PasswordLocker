@@ -12,7 +12,7 @@ class TestCredential(unittest.TestCase):
         Set up method to be run before each test cases
         :return:
         """
-        self.new_credentials = Credential("twitter", "paul", "tweet32323")
+        self.new_credentials = Credential("twitter", "susan", "tweet32323")
 
     def test_save_credential(self):
         """
